@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #222;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container h1 {
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 600;
+  /* make cool gradient look */
+  background: linear-gradient(235deg, #00dbde, #fc00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.container h1 img {
+  width: 60px;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes autoRotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  background: #333;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 50px 0 20px;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+}
+
+button::before,
+button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-image: conic-gradient(from var(--angle), #ea2dd8, #00dbde, #ea2dd8);
+  animation: autoRotate 3s linear infinite reverse;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 1px;
+  box-sizing: unset;
+}
+
+button::after {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+button:hover::after {
+  filter: blur(7px);
+}
+
+button img {
+  width: 20px;
+  margin-right: 8px;
+}
+
+/* ========================================= */
+/* .notes-container {
+  padding: 20px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 50px;
+} */
+
+.wrapper {
+  position: relative;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  min-width: 300px;
+  min-height: 150px;
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  padding-bottom: 28px;
+  margin: 20px 0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.wrapper img {
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}
